@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers/index';
 
 const defaultState = {
-  currentUser: {}
+  currentUser: null
 };
 
 const store = createStore(rootReducer, defaultState, applyMiddleware(thunk));

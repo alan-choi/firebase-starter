@@ -1,13 +1,10 @@
-import config from '../../config/firebase.config.js';
-import Firebase from 'firebase';
-Firebase.initializeApp(config);
-
-const database = Firebase.database();
+// const database = Firebase.database();
 // var userId = firebase.auth().currentUser.uid;
 // return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
 //   var username = snapshot.val().username;
 //   // ...
 // });
+import * as FirebaseApi from 'api/FirebaseAuth';
 
 function setCurrentPost(post) {
   console.log("RECEIVED CURRENT POST", post);
@@ -25,12 +22,7 @@ function receiveDataPost(res){
   }
 }
 
-export function signOutUser(){
-  return Firebase.auth().signOut();
-}
-
 function receiveCurrentUser(user) {
-  console.log("RECEIVED USER", user);
   return {
     type: "RECEIVED_USER",
     user
@@ -47,7 +39,7 @@ function displayError(err) {
 
 export const createNewUser = (email, password) => {
   return dispatch => {
-    return Firebase.auth().createUserWithEmailAndPassword(email, password)
+    return FirebaseApi.createNewUser(email, password)
       .then((res) => dispatch(receiveCurrentUser(res)))
       .catch((error) => dispatch(displayError(error)))
   }
@@ -78,23 +70,16 @@ export const submitPost = (postId, raw) => {
 
 export const loginUser = (email, password) => {
   return dispatch => {
-    return Firebase.auth().signInWithEmailAndPassword(email, password)
+    return FirebaseApi.loginUser(email, password)
       .then((res) => dispatch(receiveCurrentUser(res)))
       .catch((err) => dispatch(displayError(err)))
   }
 }
 
-export const getCurrentUser = () => {
-  let currentUser = Firebase.auth().currentUser;
-  console.log("found current User", currentUser);
-  return currentUser;
-  // return dispatch()
-}
-
 export const logOutUser = () => {
   console.log("LOGGING OUT USER");
   return dispatch => {
-    return Firebase.auth().signOut()
+    return FirebaseApi.logoutUser()
       .then(()=> dispatch(receiveCurrentUser(null)))
       .catch((err) => dispatch(displayError(err)))
   }

@@ -5,8 +5,7 @@ const currentUser = (state = {}, action) => {
     case types.RECEIVED_USER:
       return action.user;
     case types.LOGOUT_USER:
-      action.user = {};
-      return action.user
+      return null
     default:
       return state;
   }
