@@ -1,0 +1,7 @@
+{
+  "name": "Trip Logger",
+  "short_name": "Trip Logger",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait"
+}

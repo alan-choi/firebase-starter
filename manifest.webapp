@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "name": "Trip Logger",
+  "launch_path": "/index.html",
+  "description": "Create a Trip to share!",
+  "developer": {
+    "name": "Alan Choi",
+    "url": ""
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "Trip Logger",
+      "description": "Create a Trip to share"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/6.3.0/bin/node /usr/local/bin/firebase serve
+[debug] CLI Version:  3.0.6
+[debug] Platform:     darwin
+[debug] Node Version: v6.3.0
+[debug] Time:         Wed Aug 10 2016 21:57:48 GMT-0700 (PDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Starting Firebase development server...
+[info] 
+[info] Project Directory: /Users/alanchoi/workspace/kawaiicrafting
+[warn] ⚠  Port 5000 is not available. Trying another port...
+[info] Public Directory: ./
+[info] 
+[info] Server listening at: http://localhost:5001
