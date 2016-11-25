@@ -10,7 +10,9 @@ const rootRoute = {
     path: '/',
     component: ReduxApp,
     childRoutes: [
-      require('./routes/home')
+      require('./routes/createTrip'),
+      require('./routes/login'),
+      require('./routes/signup')
     ]
   }
   ]

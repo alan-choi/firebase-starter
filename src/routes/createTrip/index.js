@@ -1,9 +1,9 @@
 module.exports = {
-  path: 'home',
+  path: 'createtrip',
 
   getComponents: (nextState, cb) => {
     require.ensure([], (require) => {
-      cb(null, require('./pages/HomePage').default);
+      cb(null, require('./pages/CreateTripPage').default);
     })
   }
 }

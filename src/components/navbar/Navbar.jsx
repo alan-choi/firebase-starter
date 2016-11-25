@@ -1,16 +1,20 @@
 import React from 'react';
+import FlexBox from '../FlexBox';
 import { Link } from 'react-router';
 import './navbar.sass'
+
 export default class Navbar extends React.Component{
 
   render(){
     return (
-    <div className="Navbar">
-      <p>home</p>
-      <Link to="/admin">about</Link>
-      <p>contact</p>
-      <p onClick={this.props.logOutUser}>Log Out</p>
-    </div>
+    <FlexBox className="Navbar" alignItems="center">
+      <Link className="index-link" to="/">Trip Logger</Link>
+      <Link to="/createtrip">create a trip</Link>
+      <Link to="/signup">sign up</Link>
+      <div className="login-cta">
+        <Link to="/login">login</Link>
+      </div>
+    </FlexBox>
     )
   }
 }
