@@ -7,7 +7,6 @@ import Main from './Main';
 
 function mapStateToProps(state){
   return {
-    currentPostContent: state.postState.currentPostContent
   }
 }
 
