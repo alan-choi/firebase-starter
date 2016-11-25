@@ -1,7 +1,7 @@
 var config = require('./webpack.base.config.js'),
   webpack = require('webpack'),
   path = require('path'),
-  version = require('../package.json').version,
+  version = require('./package.json').version,
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   ExtractTextPlugin = require('extract-text-webpack-plugin'),
   CleanWebpackPlugin = require('clean-webpack-plugin'),

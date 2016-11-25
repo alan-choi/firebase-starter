@@ -1,7 +1,7 @@
 var path = require("path"),
 assign = require('object-assign'),
 HtmlWebpackPlugin = require('html-webpack-plugin'),
-version = require('../package.json').version,
+version = require('./package.json').version,
 webpack = require("webpack");
 
 module.exports = {
@@ -11,21 +11,22 @@ module.exports = {
     publicPath: '/',
     path: path.resolve('public/'),
     filename: "bundle.js",
-    sourceMapFilename: "[file].map"
+    sourceMapFilename: "[file].map",
+    chunkFilename: "[name].js",
   },
 
   module: {
-    noParse: [],
+    noParse: [/(\-|\.)min.js$/],
     loaders: [
-      { test: /\.jsx?$/, loader: 'react-hot', include: path.join(__dirname, 'src') },
       { test: /\.(js|jsx)$/,
         include: [/src/],
         exclude: [/(node_modules|persistence)/],
-        loader: 'babel-loader',
+        loader: 'babel',
         query: {
           plugins: ['transform-runtime'],
           presets: ['es2015', 'stage-0', 'react'],
-          cacheDirectory: true}},
+          cacheDirectory: true
+        }},
       { test: /\.json$/, loader: 'json'},
       { test: /\.css$/, exclude: /.(\-|\.)min.css$/, loader: 'style!css!postcss'},
       { test: /\.sass/, loader: 'style!css!sass?sourceMap'},
@@ -37,15 +38,15 @@ module.exports = {
     },
   },
 
-  resolveLoader: {
-    root: [path.join(__dirname, "node_modules"), './src', 'vendor'],
-  },
 
   resolve: {
-    root: "src",
     extensions: ["", ".js", ".jsx"],
     /* allow for root relative names in require */
     modulesDirectories: ['node_modules', 'src']
+  },
+
+  resolveLoader: {
+    root: [path.join(__dirname, "node_modules"), './src', 'vendor'],
   },
 
   plugins: [new HtmlWebpackPlugin({

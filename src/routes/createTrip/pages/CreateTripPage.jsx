@@ -5,7 +5,7 @@ export default class CreateTripPage extends React.Component {
   render(){
     return(
       <div>
-        This is the home page
+        This is the home
       </div>
     );
   }

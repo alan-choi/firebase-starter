@@ -1,7 +1,7 @@
 var config = require('./webpack.base.config.js'),
   webpack = require('webpack'),
   path = require('path'),
-  version = require('../package.json').version,
+  version = require('./package.json').version,
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   devPort = process.env.PORT = process.env.PORT || 8000;
 
@@ -10,9 +10,9 @@ config.entry = [
   'webpack-dev-server/client?http://localhost:'+devPort, 'webpack/hot/only-dev-server'
 ].concat(config.entry);
 
-config.module.loaders.unshift({
-  test: /\.(js|jsx)$/, loader: 'react-hot-loader/webpack', include: path.join(__dirname, 'src')
-});
+// config.module.loaders.unshift({
+  // test: /\.(js|jsx)$/, loader: 'react-hot-loader/webpack', include: path.join(__dirname, 'src')
+// });
 
 config.output.publicPath = 'http://localhost:'+devPort+'/';
 
@@ -25,11 +25,11 @@ config.devServer = {
   proxy: {'*': {target: 'http://localhost:8080'}},
   https: false,
   historyApiFallback: true,
-  hot: true,
+  // hot: true,
   inline: true,
   stats: {
     cached: false,
-    exclude: [/node_modules/,/bower_components/]
+    exclude: [/node_modules/]
   }
 };
 

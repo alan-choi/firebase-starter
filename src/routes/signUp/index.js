@@ -3,7 +3,7 @@ module.exports = {
 
   getComponents: (nextState, cb) => {
     require.ensure([], (require) => {
-      cb(null, require('./pages/SignupPage.jsx').default);
+      cb(null, require('./pages/SignUpPage.jsx').default);
     })
   }
 }

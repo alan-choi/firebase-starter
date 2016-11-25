@@ -1,8 +1,8 @@
-// import fireConfig from 'config/firebase.config.js';
+import config from '../../config/firebase.config.js';
 import Firebase from 'firebase';
-// Firebase.initializeApp(fireConfig);
+Firebase.initializeApp(config);
 
-// const database = Firebase.database();
+const database = Firebase.database();
 // var userId = firebase.auth().currentUser.uid;
 // return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
 //   var username = snapshot.val().username;
@@ -25,14 +25,14 @@ function receiveDataPost(res){
   }
 }
 
-function signOutUser(){
+export function signOutUser(){
   return Firebase.auth().signOut();
 }
 
 function receiveCurrentUser(user) {
   console.log("RECEIVED USER", user);
   return {
-    type: "LOGIN_USER",
+    type: "RECEIVED_USER",
     user
   }
 }
@@ -42,6 +42,14 @@ function displayError(err) {
   return {
     type: "ERROR",
     err
+  }
+}
+
+export const createNewUser = (email, password) => {
+  return dispatch => {
+    return Firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((res) => dispatch(receiveCurrentUser(res)))
+      .catch((error) => dispatch(displayError(error)))
   }
 }
 
@@ -69,7 +77,6 @@ export const submitPost = (postId, raw) => {
 }
 
 export const loginUser = (email, password) => {
-  console.log("LOGGING IN USER");
   return dispatch => {
     return Firebase.auth().signInWithEmailAndPassword(email, password)
       .then((res) => dispatch(receiveCurrentUser(res)))

@@ -12,7 +12,7 @@ const rootRoute = {
     childRoutes: [
       require('./routes/createTrip'),
       require('./routes/login'),
-      require('./routes/signup')
+      require('./routes/signUp')
     ]
   }
   ]
