@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from './components/navbar/Navbar';
 import FlexBox from './components/FlexBox';
-import CreateTripPage from './routes/createTrip/pages/CreateTripPage.jsx';
 import { getCurrentUser } from 'api/FirebaseAuth';
 
 import './styles/main.sass';
@@ -15,7 +14,6 @@ class Main extends React.Component {
 
   componentDidMount() {
     getCurrentUser();
-    console.log(document.cookie)
   }
 
   componentWillReceiveProps(newProps) {
@@ -26,10 +24,8 @@ class Main extends React.Component {
 
   handleCurrentUser(currentUser) {
     if(currentUser) {
-      console.log(currentUser);
-      let token = currentUser.refreshToken;
-      document.cookie = "user="+"token" + ":" + token;
-      this.context.router.push('/createtrip');
+      // let token = currentUser.refreshToken;
+      // if there is a currentUser do something
     } else {
       this.context.router.push('/login');
     }

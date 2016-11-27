@@ -9,18 +9,25 @@ var express = require('express'),
   compress = require('compression')
   app = express();
 
+// var Firebase = require('firebase');
+// var config = require('../config/firebase.config.js');
+//
+// Firebase.initializeApp(config);
+
 const ONE_DAY = 60*60*24;
 
 
 app.set('trust proxy', 1);
 app.use(cookieParser());
-// app.use(cookieSession({
-//   name: 'session',
-//   keys: ['superLongKeysAreGreatForLotsOfTyping', 'AnotherKeyIsUsedAsASecondaryKey'],
-//   secure: global.__PROD__,
-//   secureProxy: global.__PROD__,
-//   httpOnly: true
-// }));
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['superLongKeysAreGreatForLotsOfTyping', 'AnotherKeyIsUsedAsASecondaryKey'],
+  secure: global.__PROD__,
+  secureProxy: global.__PROD__,
+  httpOnly: true
+}));
+
 app.use((req, res, next) => {
   if (!req.cookies.sid && (req.url || "").indexOf('heartbeat') === -1){
     req.session.id = uuid.v4();
@@ -43,6 +50,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 const everythingButFilesRegex = /^[^\.]+$/;
+
+// app.use('/login-user', (req, res) => {
+//   console.log(req.body);
+//   Firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password)
+//     .then((data) => {
+//       console.log(data);
+//       res.send(data);
+//     }).catch((error) => console.log(error));
+// });
 
 app.use(everythingButFilesRegex, (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));

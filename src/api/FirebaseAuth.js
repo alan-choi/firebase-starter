@@ -7,7 +7,6 @@ export const getCurrentUser = () => {
   let currentUser = Firebase.auth().currentUser;
   console.log("found current User", currentUser);
   return currentUser;
-  // return dispatch()
 }
 
 export const loginUser = (email, password) =>

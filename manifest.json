@@ -1,6 +1,6 @@
 {
-  "name": "Trip Logger",
-  "short_name": "Trip Logger",
+  "name": "Website",
+  "short_name": "Website",
   "start_url": "/index.html",
   "display": "standalone",
   "orientation": "portrait"

@@ -9,8 +9,7 @@ export default class Navbar extends React.Component{
 
     return (
     <FlexBox className="Navbar" alignItems="center">
-      <Link className="index-link" to="/">Trip Logger</Link>
-      <Link to="/createtrip">create a trip</Link>
+      <Link className="index-link" to="/">Website Name</Link>
       <Link to="/signup">sign up</Link>
       <div className="login-cta">
         {

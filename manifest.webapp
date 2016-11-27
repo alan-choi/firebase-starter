@@ -1,10 +1,10 @@
 {
   "version": "1.0.0",
-  "name": "Trip Logger",
+  "name": "Website",
   "launch_path": "/index.html",
-  "description": "Create a Trip to share!",
+  "description": "",
   "developer": {
-    "name": "Alan Choi",
+    "name": "",
     "url": ""
   },
   "installs_allowed_from": [
@@ -15,8 +15,8 @@
   },
   "locales": {
     "en": {
-      "name": "Trip Logger",
-      "description": "Create a Trip to share"
+      "name": "",
+      "description": ""
     }
   }
 }
